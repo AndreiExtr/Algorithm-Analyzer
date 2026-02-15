@@ -97,7 +97,7 @@ algorithms = {
 # 2. Экспериментальная проверка
 # =========================================
 
-sizes = [1000, 5000, 10000, 50000, 100000, 200000]
+sizes = [100, 1000, 5000, 10000, 50000, 100000, 300000, 500000]
 results = {name: [] for name in algorithms.keys()}
 
 for size in sizes:
@@ -158,7 +158,7 @@ for i, size in enumerate(sizes):
         row.append(f"{results[name][i]:.6f}")
     table_data.append(row)
 
-columns = ["Размер"] + list(algorithms.keys())
+columns = ["Размер входа (биты)"] + list(algorithms.keys())
 
 table = ax_table.table(
     cellText=table_data,
@@ -173,7 +173,6 @@ table.scale(1.2, 1.2)
 ax_table.set_title("Таблица замеров времени")
 
 plt.tight_layout()
-plt.savefig("algorithm_complexity_with_table.png")
 plt.show()
 
 
@@ -187,4 +186,3 @@ for i, size in enumerate(sizes):
         row += f" | {results[name][i]:>10.6f}"
     print(row)
 
-print("\nГрафик сохранён в 'algorithm_complexity_comparison.png'")
